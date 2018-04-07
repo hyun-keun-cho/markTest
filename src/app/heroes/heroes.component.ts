@@ -10,12 +10,16 @@ import {Hero} from '../hero';
 export class HeroesComponent implements OnInit {
 
   // hero = 'Windstrom';
-  hero: Hero = {
+  /*hero: Hero = {
     id: 1,
     name: 'Windstorm'
-  };
+  };*/
+  hero = new Hero();
 
-  constructor() { }
+  constructor() {
+    this.hero.id = 1;
+    this.hero.name = 'Windstorm';
+  }
 
   ngOnInit() {
   }
