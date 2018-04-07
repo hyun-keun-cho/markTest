@@ -4,7 +4,7 @@
   <!-- For in 문은 JSON객체가 와야 정상적으로 작동한다.
        ES6에서는 Array도 정상적 객체를 반환하기 위하여 for of 문이 생겼다  (click)="onSelect(item)" -->
 
-  <li *ngFor="let item of heroes" (click)="onSelect(item)">
+  <li *ngFor="let item of heroes" (click)="onSelect(item)" [class.selected]="item === selectedHero">
     <span class="badge">
       {{item.id}}
     </span>
