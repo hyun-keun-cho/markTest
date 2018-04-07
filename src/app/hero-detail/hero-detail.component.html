@@ -1,0 +1,18 @@
+<div *ngIf="hero; else other">
+  <h2>{{ hero.name | uppercase }}</h2>
+  <div>
+    <span>id: </span>{{ hero.id }}
+  </div>
+  <div>
+    <label>name:
+      <!-- [] -> one way binding : 우측변수를 왼쪽에 바인딩 하라 -->
+      <!-- () -> one way binding : 좌측변수를 우측에 바인딩 하라 -->
+      <!-- ([]) -> two way binding : 양쪽변수를 양쪽에 바인딩 하라 -->
+      <input [(ngModel)]="hero.name" placeholder="name">
+    </label>
+  </div>
+</div>
+
+<ng-template #other>
+  No selected Hero.
+</ng-template>
