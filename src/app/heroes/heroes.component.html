@@ -1,6 +1,10 @@
+<button (click)="onClear()">Clear Button</button>
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <li *ngFor="let item of heroes">
+  <!-- For in 문은 JSON객체가 와야 정상적으로 작동한다.
+       ES6에서는 Array도 정상적 객체를 반환하기 위하여 for of 문이 생겼다  (click)="onSelect(item)" -->
+
+  <li *ngFor="let item of heroes" (click)="onSelect(item)">
     <span class="badge">
       {{item.id}}
     </span>
@@ -8,15 +12,24 @@
   </li>
 </ul>
 
-<h2>{{ hero.name }}</h2>
-<div>
-  <label>name:
-    <!-- [] -> one way binding : 우측변수를 왼쪽에 바인딩 하라 -->
-    <!-- () -> one way binding : 좌측변수를 우측에 바인딩 하라 -->
-    <!-- ([]) -> two way binding : 양쪽변수를 양쪽에 바인딩 하라 -->
-    <input [(ngModel)]="hero.name" placeholder="name">
-  </label>
+<div *ngIf="selectedHero; else other">
+  <h2>{{ selectedHero.name | uppercase }}</h2>
+  <div>
+    <span>id: </span>{{ selectedHero.id }}
+  </div>
+  <div>
+    <label>name:
+      <!-- [] -> one way binding : 우측변수를 왼쪽에 바인딩 하라 -->
+      <!-- () -> one way binding : 좌측변수를 우측에 바인딩 하라 -->
+      <!-- ([]) -> two way binding : 양쪽변수를 양쪽에 바인딩 하라 -->
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
 </div>
+
+<ng-template #other>
+  No selected Hero.
+</ng-template>
 
 <!-- table.aaa>tr#id>td*4 -->
 <!--
