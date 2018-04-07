@@ -1,7 +1,14 @@
-<p>
-  {{hero.id}} : {{hero.name}}
-</p>
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let item of heroes">
+    <span class="badge">
+      {{item.id}}
+    </span>
+    {{item.name}}
+  </li>
+</ul>
 
+<h2>{{ hero.name }}</h2>
 <div>
   <label>name:
     <!-- [] -> one way binding : 우측변수를 왼쪽에 바인딩 하라 -->
